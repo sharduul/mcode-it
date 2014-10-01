@@ -2,4 +2,4 @@ mcode-it-service
 ================
 
 check the app here-
-http://dool-app.herokuapp.com/
+http://mcode-it-service.herokuapp.com/now

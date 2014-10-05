@@ -12,5 +12,5 @@ require('./app/routes.js')(app);
 
 
 server.listen(app.get('port'), function () {
-    console.log('Server running at http://127.0.0.1:8000/');
+    //console.log('Server running at http://127.0.0.1:8000/');
 });

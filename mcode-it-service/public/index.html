@@ -1,0 +1,70 @@
+<html ng-app="realCodeEditor">
+<head>
+	<title>Real Code Editor</title>
+	
+	<!-- css start -->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/app.css">
+	<!-- css end -->
+
+	<!-- script start -->
+	<script src="lib/sharejs/bcsocket.js"></script> 							<!-- add transport -->
+	<script src="lib/sharejs/bcsocket-uncompressed.js"></script>             	<!-- add transport -->
+	<script src="lib/sharejs/webclient/share.js"></script>      				<!-- ShareJS -->
+	<script src="lib/sharejs/webclient/share.uncompressed.js"></script>      	<!-- ShareJS -->
+	<script src="lib/sharejs/webclient/textarea.js"></script>   				<!-- helper to attach textarea to ShareJS server -->
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>			<!-- load jQuery -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>		<!-- load angular -->
+	<script src="js/core.js"></script>
+	<script src="js/services/runCode.js"></script> 												<!-- load our run code service -->
+	<script src="js/controllers/mainController.js"></script> 									<!-- load our main controller -->
+	
+	<script src="http://ajaxorg.github.com/ace/build/src/ace.js"></script> 
+	<script src="lib/sharejs/webclient/ace.js"></script>  
+	 
+	<!-- script end -->
+	
+</head>
+<body ng-controller="mainController">
+	<h2>Real Code Editor</h2>
+	
+	<div class="container-fluid">
+		<div class="" style="float:left; margin-right:20px; border-color:#000000;">
+			<!-- <div>
+				<textarea id="sharetext" name="sharetext" style="width:600px; height:450px;"></textarea>
+			</div> -->
+			
+			<div id="sharetext" style="width:600px; height:450px; margin-bottom:10px; border: 1px solid #DFDFDF;"></div>
+			
+			<div>
+				<button type="submit" class="btn btn-primary" id="runsubmit" name="" ng-click="runCode()" style="">
+					Run
+				</button>
+			</div>
+		</div>
+		<div class="" style="float:left;">
+			<textarea readonly id='' name="" style="width:500px; height:250px;">{{output}}</textarea>
+		</div>
+	</div>
+	
+	
+	<script>
+	
+		var editor = ace.edit("sharetext");
+		sharejs.open('hello', 'text', function(error, doc) {
+		
+			if (error) 
+			{
+				console.log("ERROR:", error);
+			} 
+			else 
+			{
+				doc.attach_ace(editor);
+			}
+			
+		});
+	
+	</script>
+</body>
+</html>

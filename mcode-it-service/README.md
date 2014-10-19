@@ -20,4 +20,3 @@ password to login into RIT CS machine:
 setup sharejs:
 - add "share" dependency in package.json to version 0.6.x
 - npm install
-- 

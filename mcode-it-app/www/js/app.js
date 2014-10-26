@@ -1,5 +1,5 @@
 
-angular.module('mcodeit', ['ionic'])
+angular.module('mcodeit', ['ionic','mcodeit.controllers', 'mcodeit.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,20 +29,20 @@ angular.module('mcodeit', ['ionic'])
     .state('code', {
       url: "/code",
       templateUrl: "templates/code.html",
-      controller: 'CodeCtrl'
+      controller: 'CodeCtrl as code'
     })
 
     .state('result', {
       url: '/result',
       templateUrl: 'templates/result.html',
-      controller: 'ResultCtrl'
+      controller: 'ResultCtrl as result'
     })
 
     // show code and result pane on single view
     .state('combined', {
       url: '/combined',
       templateUrl: 'templates/combined.html',
-      controller: 'CombinedCtrl'
+      controller: 'CombinedCtrl as combo'
     })
 
   // if none of the above states are matched, use this as the fallback

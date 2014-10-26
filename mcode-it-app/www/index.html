@@ -5,6 +5,21 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+    <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+
+    #editor {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+
     <!-- <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"> -->
 
@@ -20,6 +35,14 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+
+    <script src="js/controllers/CodeCtrl.js"></script>
+
+    <script src="js/services/Common.js"></script>
+
+    <script src="lib/jquery.js"></script>
+    <script src="//d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js"></script>
+
   </head>
   <body ng-app="mcodeit">
 

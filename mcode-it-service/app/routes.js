@@ -45,6 +45,8 @@ module.exports = function(app) {
 	// get the output of program
 	app.get('/api/run', function(req, res) {
 
+		console.log(req.query.codeText);
+
 		//var code_to_run = unescape(req.params.code);
 		var code_to_run = unescape(str_code);
 		
@@ -57,8 +59,6 @@ module.exports = function(app) {
 			res.send(200, {output_text:program_result});
 			
 		});
-		
-		
 		
 	});
 

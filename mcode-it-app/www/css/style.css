@@ -2,3 +2,9 @@
 	
 	height: 0px !important;
 }
+
+
+#code-area {
+	padding: 5px;
+	padding-top: 10px;
+}

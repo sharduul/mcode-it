@@ -21,13 +21,13 @@ angular.module('mcodeit', ['ionic','mcodeit.controllers', 'mcodeit.services'])
   
   $stateProvider
 
-    .state('splash', {
-      url: "/",
-      templateUrl: "templates/splash.html"
-    })
+    // .state('splash', {
+    //   url: "/",
+    //   templateUrl: "templates/splash.html"
+    // })
 
     .state('code', {
-      url: "/code",
+      url: "/",
       templateUrl: "templates/code.html",
       controller: 'CodeCtrl as code'
     })
@@ -43,7 +43,7 @@ angular.module('mcodeit', ['ionic','mcodeit.controllers', 'mcodeit.services'])
       url: '/combined',
       templateUrl: 'templates/combined.html',
       controller: 'CombinedCtrl as combo'
-    })
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');

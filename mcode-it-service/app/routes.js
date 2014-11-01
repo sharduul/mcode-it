@@ -22,7 +22,6 @@ module.exports = function(app) {
 	  	{date: "test 1",
 	  		port: app.get('port')}); // (status code, response body)
 	  
-
 	});
 
 
@@ -51,8 +50,6 @@ module.exports = function(app) {
 	// write the new code on file
 	function write_to_file(path, content)
 	{
-		//var fs = require('fs');
-
 		fs.writeFile(path, content, function(err) {
 			if(err) {
 				console.log(err);
@@ -67,10 +64,6 @@ module.exports = function(app) {
 	// send the updated file to servers. run the program and get the results.
 	function run_ssh2(callback)
 	{
-
-		//var fs = require('fs');
-		//var Connection = require('ssh2');
-
 		var c = new Connection();
 		c.on('ready', function() {
 		  console.log('Connection :: ready');

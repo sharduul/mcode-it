@@ -2,5 +2,5 @@
 
 void main()
 {
-printf("heasdfasdflloworld\n");
+printf("heasdld");
 }

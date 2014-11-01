@@ -1,18 +1,37 @@
 
 module.exports = function(app) {
 	
-	var Connection = require('ssh2');
-	var fs = require('fs');
-	var crypt = require('sjcl');
+	//var Connection = require('ssh2');
+	//var fs = require('fs');
+	//var crypt = require('sjcl');
 
 
 	var e_pwd = '{"iv":"F6hqYswTohihTCm1doq6qw==","v":1,"iter":1000,"ks":128,"ts":64,"mode":"ccm"'
 					+ ',"adata":"","cipher":"aes","salt":"+u1QtH9KnzE=","ct":"s+G7gWgmskblFpOeqcCCHyZsGfqohg=="}';
-	var var_password = crypt.decrypt("password", e_pwd);
+	//var var_password = crypt.decrypt("password", e_pwd);
+
+	var var_password = 'Awesome_armp1t';
 
 	var var_uname = 'scb8803';
 	var program_file_name = "program_to_run.c";
 	var program_result = "";
+
+
+	
+
+	// /******* delete it later *********/
+	// var str_code = "";
+	// var fs1 = require('fs');
+	// fs1.readFile(program_file_name, function (err, data) {
+	//   if (err) {
+	//     throw err; 
+	//   }
+	  
+	//   str_code = data;
+
+	// });
+
+	/*************************/
 
 
 	
@@ -51,7 +70,7 @@ module.exports = function(app) {
 	// write the new code on file
 	function write_to_file(path, content)
 	{
-		//var fs = require('fs');
+		var fs = require('fs');
 
 		fs.writeFile(path, content, function(err) {
 			if(err) {
@@ -68,8 +87,8 @@ module.exports = function(app) {
 	function run_ssh2(callback)
 	{
 
-		//var fs = require('fs');
-		//var Connection = require('ssh2');
+		var fs = require('fs');
+		var Connection = require('ssh2');
 
 		var c = new Connection();
 		c.on('ready', function() {
@@ -154,10 +173,7 @@ module.exports = function(app) {
 														  
 												program_result = (extended === 'stderr' ? 'STDERR: ' : '') + data;
 												
-											}).stderr.on('data', function(data) {
-											      console.log('STDERR: ' + data);
-											    });
-
+											});
 											stream.on('end', function() {
 											  console.log('Stream :: EOF');
 											});

@@ -15,3 +15,14 @@ password to login into RIT CS machine:
 - SJCL library is used
 - 'e_pwd' contains encrypted string of original password
 - 'e_pwd' is then decrypted to make FTP connection and run the program
+
+
+for getting error (STDERR) from server:
+
+	stream.on('data', function(data, extended) {
+				  
+		program_result = (extended === 'stderr' ? 'STDERR: ' : '') + data;
+		
+	}).stderr.on('data', function(data) {
+	  console.log('STDERR: ' + data);
+	});

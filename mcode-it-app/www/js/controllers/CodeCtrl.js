@@ -2,22 +2,21 @@ angular
 	.module('mcodeit.controllers', [])
 	.controller('CodeCtrl', CodeCtrl);
 
-CodeCtrl.$inject = ['Common', 'Code'];
+CodeCtrl.$inject = ['Common', 'Code', '$rootScope'];
 
-function CodeCtrl(Common, Code) {
+function CodeCtrl(Common, Code, $rootScope) {
 
-	vm = this;
-	vm.codeText = '';
+	var vm = this;
+	vm.codeText = $rootScope.codeText;
 	vm.output = Common.Output;
 	vm.Run = Run;
 
 
-	//console.log(vm.codeText);
-
-
-	Common.ActivateAce();
+	//Common.ActivateAce();
 
 	function Run() {
+
+		$rootScope.codeText = vm.codeText; // persist the code
 
 		Code.Run(vm.codeText)
 		.then(function(result){

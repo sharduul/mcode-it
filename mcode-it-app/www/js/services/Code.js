@@ -5,21 +5,21 @@ angular
 Code.$inject = ['$http', 'Common'];
 
 function Code($http, Common) {
-  
+
 	var service = {
-		Run : Run
-	};
+					Run : Run
+				};
 
 	return service;
 
 
-	function Run(codeText){
+	function Run(codeText_param){
 
 		var responsePromise =  $http({
 										url: "http://localhost:8000/api/run", 
 										//url: "http://192.168.0.101:8000/api/run", 
 										method: "GET",
-										params: {codeText : codeText}
+										params: {codeText : codeText_param}
 									 });
 
 		responsePromise.success(function(data, status, headers, config) {

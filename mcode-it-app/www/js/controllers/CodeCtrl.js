@@ -7,8 +7,10 @@ CodeCtrl.$inject = ['Common', 'Code', '$rootScope'];
 function CodeCtrl(Common, Code, $rootScope) {
 
 	var vm = this;
+	vm.placeHolder = "Enter your program here";
 	vm.codeText = $rootScope.codeText;
 	vm.output = Common.Output;
+
 	vm.Run = Run;
 	vm.GetClass = GetClass;
 

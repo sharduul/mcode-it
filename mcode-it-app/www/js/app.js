@@ -40,12 +40,6 @@ angular.module('mcodeit', ['ionic','mcodeit.controllers', 'mcodeit.services'])
       
     });
 
-    // show code and result pane on single view
-    // .state('combined', {
-    //   url: '/combined',
-    //   templateUrl: 'templates/combined.html',
-    //   controller: 'CombinedCtrl as combo'
-    // });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/code');

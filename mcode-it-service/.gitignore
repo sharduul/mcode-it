@@ -3,3 +3,4 @@ logs/*
 node_modules/
 mcode-heroku-key
 mcode-heroku-key.pub
+user-data/

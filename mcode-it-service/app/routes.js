@@ -11,8 +11,9 @@ module.exports = function(app) {
 	var var_password = crypt.decrypt("password", e_pwd);
 
 	var var_uname = 'scb8803';
-	var program_file_name = "program_to_run.c";
-	var program_result = "";
+	//var program_file_name = "program_to_run.c";
+	var class_name = '';
+	var program_result = '';
 
 
 	
@@ -31,13 +32,13 @@ module.exports = function(app) {
 		//console.log(req.query.codeText);
 
 		var code_to_run = unescape(req.query.codeText);
-		var class_name = req.query.className;
+		class_name = req.query.className;
 
 		console.log(class_name);
 
 		//var code_to_run = unescape(str_code);
 		
-		write_to_file(program_file_name, code_to_run);
+		write_to_file('user-data/' + class_name + '.java', code_to_run);
 
 		run_ssh2(function(){
 			console.log("test call back");
@@ -68,6 +69,10 @@ module.exports = function(app) {
 	// send the updated file to servers. run the program and get the results.
 	function run_ssh2(callback)
 	{
+
+		var rit_server_file_path = 'MSFinal-UserData/';
+		var rit_server_file_name = class_name + '.java';
+
 		program_result = ''; // reset result from server
 		var c = new Connection();
 		c.on('ready', function() {
@@ -83,7 +88,7 @@ module.exports = function(app) {
 						console.log( "- SFTP started" );
 						
 						
-						sftp.unlink( program_file_name, function(err){ 
+						sftp.unlink( rit_server_file_path + rit_server_file_name, function(err){ 
 								
 							if ( err ) {
 								console.log( "Error, problem starting SFTP: %s", err );
@@ -98,8 +103,8 @@ module.exports = function(app) {
 		 
 
 						// upload file
-						var readStream = fs.createReadStream(program_file_name);
-						var writeStream = sftp.createWriteStream(program_file_name);
+						var readStream = fs.createReadStream('user-data/' + class_name + '.java');
+						var writeStream = sftp.createWriteStream(rit_server_file_path + rit_server_file_name);
 						
 						
 						writeStream.on('end', function () {
@@ -116,7 +121,7 @@ module.exports = function(app) {
 							
 								console.log( "- file transferred" );
 								
-								sftp.chmod( program_file_name, '0777', function(err){ 
+								sftp.chmod( rit_server_file_path + rit_server_file_name, '0777', function(err){ 
 								
 									if ( err ) {
 										console.log( "Error, problem starting SFTP: %s", err );
@@ -132,7 +137,8 @@ module.exports = function(app) {
 									console.log( "Executing program" );
 
 										//execute the program
-										c.exec('gcc -o testc ' + program_file_name + ' && ./testc', function(err, stream) {
+										//c.exec('gcc -o testc ' + program_file_name + ' && ./testc', function(err, stream) {
+										c.exec('cd ' + rit_server_file_path + ' && javac ' + rit_server_file_name + ' && java ' + class_name, function(err, stream) {
 										//c.exec('ls -lah', function(err, stream) {
 											
 											if (err) 

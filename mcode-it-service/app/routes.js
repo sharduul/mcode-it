@@ -28,7 +28,7 @@ module.exports = function(app) {
 	// get the output of program
 	app.get('/api/run', function(req, res) {
 
-		console.log(req.query.codeText);
+		//console.log(req.query.codeText);
 
 		var code_to_run = unescape(req.query.codeText);
 		//var code_to_run = unescape(str_code);
@@ -64,6 +64,7 @@ module.exports = function(app) {
 	// send the updated file to servers. run the program and get the results.
 	function run_ssh2(callback)
 	{
+		program_result = ''; // reset result from server
 		var c = new Connection();
 		c.on('ready', function() {
 		  console.log('Connection :: ready');
@@ -139,17 +140,14 @@ module.exports = function(app) {
 
 											stream.on('data', function(data, extended) {
 
-												console.log(data);
-
-												//
-												console.log((extended === 'stderr' ? 'STDERR: ' : 'STDOUT: ')
-														  + data);
-														  
-												program_result = (extended === 'stderr' ? 'STDERR: ' : '') + data;
+												//console.log((extended === 'stderr' ? 'STDERR: ' : 'STDOUT: ') + data);														  
+												program_result += data;
 												
 											}).stderr.on('data', function(data) {
-											      console.log('STDERR: ' + data);
-											    });
+
+												 	program_result += data;
+
+											});
 
 											stream.on('end', function() {
 											  console.log('Stream :: EOF');

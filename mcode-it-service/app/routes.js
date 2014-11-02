@@ -31,6 +31,10 @@ module.exports = function(app) {
 		//console.log(req.query.codeText);
 
 		var code_to_run = unescape(req.query.codeText);
+		var class_name = req.query.className;
+
+		console.log(class_name);
+
 		//var code_to_run = unescape(str_code);
 		
 		write_to_file(program_file_name, code_to_run);

@@ -2,9 +2,9 @@ angular
 	.module('mcodeit.services')
 	.factory('Code', Code);
 
-Code.$inject = ['$http'];
+Code.$inject = ['$http', 'Common'];
 
-function Code($http) {
+function Code($http, Common) {
   
 	var service = {
 		Run : Run
@@ -23,12 +23,14 @@ function Code($http) {
 									 });
 
 		responsePromise.success(function(data, status, headers, config) {
-			console.log(data);
+			//console.log(data);
+			Common.Output = data.output_text;
 		});
 		responsePromise.error(function(data, status, headers, config) {
 			console.log("error");
 		});
 
+		return responsePromise;
 	}
 
 }

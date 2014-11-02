@@ -1,10 +1,19 @@
-.ace_gutter_active_line {
-	
-	height: 0px !important;
+/** common layout **/
+
+.margin-small {
+	margin: 2px;
 }
 
 
+/** common layout ends **/
+
 #code-area {
 	padding: 5px;
-	padding-top: 10px;
+	height: 550px;
+	max-width: 100%;
+	border: 1px #ebebeb solid;
+}
+
+.wrapper {
+	padding: 2px;
 }

@@ -7,7 +7,8 @@ Common.$inject = [];
 function Common() {
   
 	var service = {
-		ActivateAce : ActivateAce
+		ActivateAce : ActivateAce,
+		Output: ''
 	};
 
 	return service;

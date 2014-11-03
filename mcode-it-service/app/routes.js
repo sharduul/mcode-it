@@ -138,7 +138,8 @@ module.exports = function(app) {
 
 										//execute the program
 										//c.exec('gcc -o testc ' + program_file_name + ' && ./testc', function(err, stream) {
-										c.exec('cd ' + rit_server_file_path + ' && javac ' + rit_server_file_name + ' && java ' + class_name, function(err, stream) {
+										//c.exec('cd ' + rit_server_file_path + ' && javac ' + rit_server_file_name + ' && java ' + class_name, function(err, stream) {
+										c.exec('cd ' + rit_server_file_path + ' && bash run.sh ' + class_name, function(err, stream) {
 										//c.exec('ls -lah', function(err, stream) {
 											
 											if (err) 

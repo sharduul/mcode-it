@@ -26,3 +26,10 @@ for getting error (STDERR) from server:
 	}).stderr.on('data', function(data) {
 	  console.log('STDERR: ' + data);
 	});
+
+
+
+Remote parallel Java programs execution:
+- shell script called 'run.sh' is executed (find it in 'imp files' folder)
+- in that classpath is set to 'pj.jar' - which is the parallel java library (find it in 'imp files' folder)
+note: you can use the same shell script to run normal programs as well

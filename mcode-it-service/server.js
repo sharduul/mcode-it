@@ -13,13 +13,13 @@ app.set('port', process.env.PORT || 8000); // set the port number as environment
 require('./app/routes.js')(app);
 
 
-var my_ip = '192.168.0.100';
+var my_ip = '192.168.0.104';
 
-server.listen(8000, my_ip, function () {
-    console.log('Server started on http://' + my_ip + ':8000');
-});
-
-// server.listen(app.get('port'), function () {
-//     console.log(app.get('port'));
+// server.listen(8000, my_ip, function () {
+//     console.log('Server started on http://' + my_ip + ':8000');
 // });
+
+server.listen(app.get('port'), function () {
+    console.log(app.get('port'));
+});
 

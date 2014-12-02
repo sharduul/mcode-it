@@ -9,7 +9,8 @@
 
 #code-area {
 	padding: 5px;
-	height: 500px;
+	height: 550px;
+	max-height: 550px;
 	max-width: 100%;
 	border: 1px #ebebeb solid;
 }

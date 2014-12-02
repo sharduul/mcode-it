@@ -30,6 +30,7 @@ module.exports = function(app) {
 	app.get('/api/run', function(req, res) {
 
 		//console.log(req.query.codeText);
+		program_result = ''; // reset program result
 
 		var code_to_run = unescape(req.query.codeText);
 		class_name = req.query.className;

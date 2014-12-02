@@ -17,7 +17,8 @@ function Code($http, Common) {
 
 		var responsePromise =  $http({
 										//url: "http://localhost:8000/api/run", 
-										url: "http://192.168.0.100:8000/api/run", 
+										//url: "http://192.168.0.104:8000/api/run", 
+										url: "http://mcode-it-service.herokuapp.com/api/run", 
 										method: "GET",
 										params: {
 													codeText 	: codeText_param,
@@ -35,5 +36,7 @@ function Code($http, Common) {
 
 		return responsePromise;
 	}
+
+
 
 }
